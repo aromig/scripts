@@ -33,8 +33,8 @@ then
 	sudo ln -sf /System/Library/Frameworks/JavaVM.framework/Commands/javaws /usr/bin/javaws
 
 	echo "... done!"
-	exit 1
+	exit 0
 else
 	echo "... This script needs to be run as a local administrator account."
-	exit 0
+	exit 1
 fi
