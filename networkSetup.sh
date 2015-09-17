@@ -10,7 +10,7 @@ then
 	echo
 	echo "ERROR: Must run script via sudo and with arguments."
 	echo
-	echo "Usage: sudo ./domainSetup.sh <Username>"
+	echo "Usage: sudo ./domainSetup.sh <ComputerName> <Username>"
 	exit 1
 fi
 
