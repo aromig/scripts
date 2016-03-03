@@ -82,9 +82,9 @@ dsconfigad -mobileconfirm disable
 echo
 echo "=== Setting Search Domains"
 {
-networksetup -setsearchdomains "USB Ethernet" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
-networksetup -setsearchdomains "Apple USB Ethernet Adapter" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
-networksetup -setsearchdomains "Wi-Fi" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
+networksetup -setsearchdomains "USB Ethernet" domain 1, domain 2
+networksetup -setsearchdomains "Apple USB Ethernet Adapter" domain 1, domain 2
+networksetup -setsearchdomains "Wi-Fi" domain 1, domain 2
 } > /dev/null
 echo
 echo "=== Summary"
