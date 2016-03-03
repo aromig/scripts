@@ -4,6 +4,7 @@
 # .command version of .sh script to be run directly from Finder
 # Author: Adam Romig
 # Actual values redacted
+# Last Modified: 02/05/16
 
 echo "Running script as administrator"
 sudo echo
@@ -14,7 +15,7 @@ read -p "Add to Domain User ID: " input2
 # Definitions
 timeserver="timeserver"
 domain="domain"
-groups="admin group 1,admin group 2"
+groups="admin group1,admin group 2"
 computername=$(echo $input1 | tr '[:lower:]' '[:upper:]')
 fqdn=$computername.$domain
 
@@ -73,8 +74,11 @@ sudo dsconfigad -mobileconfirm disable
 # Set Search Domains
 echo
 echo "=== Setting Search Domains"
-sudo networksetup -setsearchdomains "USB Ethernet" domain1, domain2, domain3
-sudo networksetup -setsearchdomains "Wi-Fi" domain1, domain2, domain3
+{
+sudo networksetup -setsearchdomains "USB Ethernet" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
+sudo networksetup -setsearchdomains "Apple USB Ethernet Adapter" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
+sudo networksetup -setsearchdomains "Wi-Fi" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
+} > /dev/null
 
 echo
 echo "=== Summary"
@@ -95,9 +99,11 @@ dsconfigad -show | grep "Create mobile account at login"
 dsconfigad -show | grep "Require confirmation"
 echo
 echo "== Search Domains"
-usbethernet=$(networksetup -getsearchdomains "USB Ethernet" | tr '\n' ', ')
-wifi=$(networksetup -getsearchdomains Wi-Fi | tr '\n' ', ')
+usbethernet=$(networksetup -getsearchdomains "USB Ethernet" | tr '\n' ', ') > /dev/null
+appleusb=$(networksetup -getsearchdomains "Apple USB Ethernet Adapter" | tr '\n' ', ') > /dev/null
+wifi=$(networksetup -getsearchdomains Wi-Fi | tr '\n' ', ') > /dev/null
 echo "USB Ethernet                     = $usbethernet"
+echo "Apple USB Ethernet Adapter       = $appleusb"
 echo "Wi-Fi                            = $wifi"
 
 echo

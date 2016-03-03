@@ -3,6 +3,7 @@
 # Script to automate several by-hand processes in setting up company MacBooks
 # Author: Adam Romig
 # Actual values redacted
+# Last Modified: 02/05/16
 
 if
 	[ "$(id -u)" != "0" ]
@@ -80,9 +81,11 @@ dsconfigad -mobileconfirm disable
 # Set Search Domains
 echo
 echo "=== Setting Search Domains"
-networksetup -setsearchdomains "USB Ethernet" domain1 domain2 domain3
-networksetup -setsearchdomains "Wi-Fi" domain1 domain2 domain3
-
+{
+networksetup -setsearchdomains "USB Ethernet" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
+networksetup -setsearchdomains "Apple USB Ethernet Adapter" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
+networksetup -setsearchdomains "Wi-Fi" legal.regn.net regn.net corp.regn.net science.regn.net reedelsevier.com reed-elsevier.com lexisnexis.com lexis-nexis.com
+} > /dev/null
 echo
 echo "=== Summary"
 newComputerName=$(scutil --get ComputerName)
@@ -102,9 +105,11 @@ dsconfigad -show | grep "Create mobile account at login"
 dsconfigad -show | grep "Require confirmation"
 echo
 echo "== Search Domains"
-usbethernet=$(networksetup -getsearchdomains "USB Ethernet" | tr '\n' ', ')
-wifi=$(networksetup -getsearchdomains Wi-Fi | tr '\n' ', ')
+usbethernet=$(networksetup -getsearchdomains "USB Ethernet" | tr '\n' ', ') > /dev/null
+appleusbethernet=$(networksetup -getsearchdomains "Apple USB Ethernet Adapter" | tr '\n' ', ') > /dev/null
+wifi=$(networksetup -getsearchdomains Wi-Fi | tr '\n' ', ') > /dev/null
 echo "USB Ethernet                     = $usbethernet"
+echo "Apple USB Ethernet Adapter       = $appleusbethernet"
 echo "Wi-Fi                            = $wifi"
 
 echo
