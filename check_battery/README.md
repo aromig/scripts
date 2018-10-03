@@ -15,7 +15,7 @@ These scripts check the battery level of a connected mouse and keyboard (separat
 * check_mouse_battery.sh
 * check_kb_battery.sh
 
-### Property List Files
+### Property List Files for Launchd
 
 * com.penguingeek.checkmousebattery.plist
 * com.penguingeek.checkkeyboardbattery.plist
