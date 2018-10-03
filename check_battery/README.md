@@ -2,7 +2,7 @@
 
 ## Purpose
 
-For some reason, macOS has a low mouse/keyboard battery threshold set at 2%. I needed a bit more warning than that.
+For some reason, macOS has a low mouse/keyboard battery threshold notification set at 2%. I needed a bit more warning than that.
 
 These scripts check the battery level of a connected mouse and keyboard (separate scripts) and displays a notification if it is below a threshold (default 15%). The threshold can be set threshold as a parameter. Example: `./check_mouse_battery.sh 10` to check against 10% battery.
 
